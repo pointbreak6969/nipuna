@@ -383,7 +383,7 @@ const mockData: Data[] = [
     lastUpdated: "2023-10-16",
   },
 ];
-import {Avatar, AvatarFallback, AvatarImage} from "./ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 const EditableCell = ({
   value: mockData,
   row,
@@ -499,7 +499,7 @@ const EditableCell = ({
         <div className="flex items-start gap-2 w-full">
           <div className="w-8 h-8 bg-gray-300 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-medium">
             <Avatar className="h-7 w-7">
-              <AvatarImage src="/placeholder.svg?height=28&width=28" />
+              <AvatarImage src="" />
               <AvatarFallback className="text-xs">H</AvatarFallback>
             </Avatar>
           </div>
@@ -813,156 +813,156 @@ const TableData = () => {
         </div>
 
         <div className="border border-gray-300 bg-white rounded-sm h-[500px] overflow-scroll ">
-          <Table className="border-collapse  ">
+            <Table className="border-collapse  ">
             <TableCaption className="text-gray-500 bg-gray-50 border-b border-gray-300 py-2 caption-top">
               A list of clients and prospects. For Keyboard Navigation click
               "Enter" on the desired cell to enable editing.
             </TableCaption>
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => {
-                const visibleHeaders = headerGroup.headers;
-                const totalVisibleColumns = visibleHeaders.length;
-                const columnWidth =
-                  totalVisibleColumns > 0
-                    ? `${Math.floor(90 / totalVisibleColumns)}%`
-                    : "90%";
-                const addColumnWidth = "10%";
+              const visibleHeaders = headerGroup.headers;
+              const totalVisibleColumns = visibleHeaders.length;
+              const columnWidth =
+                totalVisibleColumns > 0
+                ? `${Math.floor(90 / totalVisibleColumns)}%`
+                : "90%";
+              const addColumnWidth = "10%";
 
-                return (
-                  <TableRow>
-                    <TableHead className="border-r p-2 border-gray-200 min-w-[50px]">
-                      <Checkbox />
-                    </TableHead>
-                    {visibleHeaders.map((header) => (
-                      <TableHead
-                        key={header.id}
-                        className="border-r border-gray-200 min-w-[120px]"
-                        style={{ width: columnWidth }}
+              return (
+                <TableRow key={headerGroup.id}>
+                <TableHead className="border-r p-2 border-gray-200 min-w-[50px]">
+                  <Checkbox />
+                </TableHead>
+                {visibleHeaders.map((header) => (
+                  <TableHead
+                  key={header.id}
+                  className="border-r border-gray-200 min-w-[120px]"
+                  style={{ width: columnWidth }}
+                  >
+                  <div className="flex items-center justify-between p-2 text-md text-gray-700">
+                    {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                      header.column.columnDef.header,
+                      header.getContext()
+                      )}
+                    <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <MoreVertical className="cursor-pointer hover:bg-gray-100 rounded p-1 " />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-48" align="end">
+                      <DropdownMenuItem
+                      onClick={() => {
+                        header.column.toggleVisibility(false);
+                      }}
                       >
-                        <div className="flex items-center justify-between p-2 text-md text-gray-700">
-                          {header.isPlaceholder
-                            ? null
-                            : flexRender(
-                                header.column.columnDef.header,
-                                header.getContext()
-                              )}
-                          <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                              <MoreVertical className="cursor-pointer hover:bg-gray-100 rounded p-1 " />
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent className="w-48" align="end">
-                              <DropdownMenuItem
-                                onClick={() => {
-                                  header.column.toggleVisibility(false);
-                                }}
-                              >
-                                Hide Column
-                              </DropdownMenuItem>
-                            </DropdownMenuContent>
-                          </DropdownMenu>
-                        </div>
-                      </TableHead>
-                    ))}
+                      Hide Column
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
+                  </TableHead>
+                ))}
 
-                    <TableHead
-                      className="border-r border-gray-200 min-w-[100px]"
-                      style={{ width: addColumnWidth }}
+                <TableHead
+                  className="border-r border-gray-200 min-w-[100px]"
+                  style={{ width: addColumnWidth }}
+                >
+                  <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                    variant="ghost"
+                    className="p-1 text-gray-500 hover:bg-gray-100 rounded w-full"
                     >
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button
-                            variant="ghost"
-                            className="p-1 text-gray-500 hover:bg-gray-100 rounded w-full"
-                          >
-                            + Add Column
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent className="w-48" align="end">
-                          {hiddenColumns.length > 0 ? (
-                            hiddenColumns.map((column) => (
-                              <DropdownMenuItem
-                                key={column.id}
-                                onClick={() => showColumn(column.id)}
-                              >
-                                {
-                                  (column.columnDef as ColumnDef<any, any>)
-                                    ?.header as string
-                                }
-                              </DropdownMenuItem>
-                            ))
-                          ) : (
-                            <DropdownMenuItem disabled>
-                              No hidden columns
-                            </DropdownMenuItem>
-                          )}
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableHead>
-                  </TableRow>
-                );
+                    + Add Column
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-48" align="end">
+                    {hiddenColumns.length > 0 ? (
+                    hiddenColumns.map((column) => (
+                      <DropdownMenuItem
+                      key={column.id}
+                      onClick={() => showColumn(column.id)}
+                      >
+                      {
+                        (column.columnDef as ColumnDef<any, any>)
+                        ?.header as string
+                      }
+                      </DropdownMenuItem>
+                    ))
+                    ) : (
+                    <DropdownMenuItem disabled>
+                      No hidden columns
+                    </DropdownMenuItem>
+                    )}
+                  </DropdownMenuContent>
+                  </DropdownMenu>
+                </TableHead>
+                </TableRow>
+              );
               })}
             </TableHeader>
             <TableBody>
               {table.getRowModel().rows?.length ? (
-                table.getRowModel().rows.map((row, index) => {
-                  const visibleCells = row.getVisibleCells();
-                  const totalVisibleColumns = visibleCells.length;
-                  const columnWidth =
-                    totalVisibleColumns > 0
-                      ? `${Math.floor(90 / totalVisibleColumns)}%`
-                      : "90%";
+              table.getRowModel().rows.map((row, index) => {
+                const visibleCells = row.getVisibleCells();
+                const totalVisibleColumns = visibleCells.length;
+                const columnWidth =
+                totalVisibleColumns > 0
+                  ? `${Math.floor(90 / totalVisibleColumns)}%`
+                  : "90%";
 
-                  return (
-                    <TableRow key={row.id}>
-                      <TableCell className="border-r p-2 border-gray-200 min-w-[50px]">
-                        <Checkbox />
-                      </TableCell>
-                      {visibleCells.map((cell) => (
-                        <TableCell
-                          key={cell.id}
-                          className="p-2 border-r border-gray-200 min-w-[120px] overflow-hidden"
-                          style={{ width: columnWidth }}
-                        >
-                          {flexRender(
-                            cell.column.columnDef.cell,
-                            cell.getContext()
-                          )}
-                        </TableCell>
-                      ))}
-                      <TableCell
-                        className="p-2 border-r border-gray-200 min-w-[100px]"
-                        style={{ width: "10%" }}
-                      >
-                        {/* Empty cell for add column alignment */}
-                      </TableCell>
-                    </TableRow>
-                  );
-                })
-              ) : (
-                <TableRow>
+                return (
+                <TableRow key={row.id}>
+                  <TableCell className="border-r p-2 border-gray-200 min-w-[50px]">
+                  <Checkbox />
+                  </TableCell>
+                  {visibleCells.map((cell) => (
                   <TableCell
-                    colSpan={table.getVisibleFlatColumns().length + 1}
-                    className="text-center text-gray-500 border-r border-gray-200"
+                    key={cell.id}
+                    className="p-2 border-r border-gray-200 min-w-[120px] overflow-hidden"
+                    style={{ width: columnWidth }}
                   >
-                    No data available
+                    {flexRender(
+                    cell.column.columnDef.cell,
+                    cell.getContext()
+                    )}
+                  </TableCell>
+                  ))}
+                  <TableCell
+                  className="p-2 border-r border-gray-200 min-w-[100px]"
+                  style={{ width: "10%" }}
+                  >
+                  {/* Empty cell for add column alignment */}
                   </TableCell>
                 </TableRow>
+                );
+              })
+              ) : (
+              <TableRow>
+                <TableCell
+                colSpan={table.getVisibleFlatColumns().length + 1}
+                className="text-center text-gray-500 border-r border-gray-200"
+                >
+                No data available
+                </TableCell>
+              </TableRow>
               )}
 
               <TableRow>
-                <TableCell
-                  colSpan={table.getVisibleFlatColumns().length + 1}
-                  className="p-2 border-r border-gray-200"
-                >
-                  <div className="flex items-center justify-between">
-                    <Button variant="outline" onClick={addRow}>
-                      Add Row
-                    </Button>
-                  </div>
-                </TableCell>
+              <TableCell
+                colSpan={table.getVisibleFlatColumns().length + 1}
+                className="p-2 border-r border-gray-200"
+              >
+                <div className="flex items-center justify-between">
+                <Button variant="outline" onClick={addRow}>
+                  Add Row
+                </Button>
+                </div>
+              </TableCell>
               </TableRow>
             </TableBody>
-          </Table>
+            </Table>
         </div>
       </div>
     </div>
