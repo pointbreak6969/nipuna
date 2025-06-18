@@ -79,9 +79,9 @@ const TableTop = () => {
               <path
                 d="M0.833344 10.5L5.00001 14.6666L9.16668 10.5M0.833344 5.49998L5.00001 1.33331L9.16668 5.49998"
                 stroke="#667085"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
 

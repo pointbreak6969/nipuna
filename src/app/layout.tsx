@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from 'next/font/google';
 import "./globals.css";
 import AppSidebar from "@/components/AppSidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import Navbar from "@/components/Navbar";
-import App from "next/app";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,13 +30,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}
       >
-        <div className="flex h-screen flex-col">
+        <div className="flex flex-col h-dvh overflow-hidden">
           <Navbar />
-          <div className="overflow-hidden">
-            {" "}
+          <div >
             <SidebarProvider>
               <AppSidebar />
-              <main className="w-full">{children}</main>
+              <main className="flex-1 overflow-hidden">{children}</main>
             </SidebarProvider>
           </div>
         </div>
