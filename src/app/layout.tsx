@@ -28,13 +28,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`  }
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}
       >
-        <Navbar />
-        <SidebarProvider>
-          <AppSidebar />
-          <main className="w-full">{children}</main>
-        </SidebarProvider>
+        <div className="flex h-screen flex-col">
+          <Navbar />
+          <div className="overflow-hidden">
+            {" "}
+            <SidebarProvider>
+              <AppSidebar />
+              <main className="w-full">{children}</main>
+            </SidebarProvider>
+          </div>
+        </div>
       </body>
     </html>
   );
