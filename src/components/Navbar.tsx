@@ -63,7 +63,7 @@ const Navbar = () => {
               >
                 <div className="flex items-center h-full w-full">
                   <Avatar className="h-7 w-7">
-                    <AvatarImage src="/placeholder.svg?height=28&width=28" />
+                    <AvatarImage src="./image.png" />
                     <AvatarFallback className="text-xs">H</AvatarFallback>
                   </Avatar>
                   <ChevronDown className=" h-4 w-4" />
