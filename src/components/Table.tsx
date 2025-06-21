@@ -452,7 +452,7 @@ const EditableCell = ({
           <div className="flex items-start gap-2 w-full">
             <div className="w-8 h-8 bg-gray-300 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-medium">
               <Avatar className="h-7 w-7">
-                <AvatarImage src="/placeholder.svg?height=28&width=28" />
+                <AvatarImage src="./image.png" />
                 <AvatarFallback className="text-xs">H</AvatarFallback>
               </Avatar>
             </div>
