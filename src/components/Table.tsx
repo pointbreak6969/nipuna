@@ -948,8 +948,7 @@ const TableData = () => {
                 </TableCell>
               </TableRow>
               )}
-
-              <TableRow>
+        
               <TableCell
                 colSpan={table.getVisibleFlatColumns().length + 1}
                 className="p-2 border-r border-gray-200"
@@ -959,8 +958,8 @@ const TableData = () => {
                   Add Row
                 </Button>
                 </div>
+            
               </TableCell>
-              </TableRow>
             </TableBody>
             </Table>
         </div>

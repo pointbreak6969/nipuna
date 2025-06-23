@@ -1,3 +1,4 @@
+"use client"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,8 +13,9 @@ import {
   FileText,
   ClipboardList,
   MoreHorizontal,
+  Menu
 } from "lucide-react"
-
+import { useSidebar } from "./ui/sidebar"
 const AppSidebar = () => {
   const menuItems = [
     { icon: LayoutDashboard, label: "Dashboard" },
@@ -24,11 +26,11 @@ const AppSidebar = () => {
     { icon: FileText, label: "Quotation" },
     { icon: ClipboardList, label: "Tasks" },
   ]
-
+  const {open, setOpen} = useSidebar()
   return (
-    <div className="w-64 h-screen bg-white mt-2">
+    <div className="w-64 h-screen bg-white mt-2" >
       {/* CRM Dropdown Header */}
-      <div className="p-1">
+      <div className="p-1 flex items-center justify-between">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
@@ -45,6 +47,9 @@ const AppSidebar = () => {
             <DropdownMenuItem>Marketing</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+        <div>
+          <Menu/>
+        </div>
       </div>
 
       {/* Search Bar */}
